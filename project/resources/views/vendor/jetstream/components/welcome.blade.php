@@ -19,7 +19,7 @@
     @csrf
         <div style="width:15%;float:left;display: flex;">
             <button class="d-flex">
-                <img src="/svg/plus.svg"alt="" style="height: 40px;margin:25px;">
+                <img src="/svg/plus.svg" alt="" style="height: 35px;margin:25px;">
             </button>
         </div>
 
@@ -29,6 +29,5 @@
             <label for="description" style="margin-left: 10px;margin-buttom:100px;" >Course description : </label>
             <textarea id="description" type="description" name = "description" style="border-width: thin;height: 50px;width:500px;resize: none;border-radius: 4px; margin-top:15px;"></textarea>
         </div>
-
         </form>
 </div>

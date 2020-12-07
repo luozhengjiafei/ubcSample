@@ -23,8 +23,13 @@ Route::get('/', function () {
 Route::post('/upload',function(Request $request){
     $course_id = $request->course_id;
     $detail = $request->description;
+    $condition = DB::table("courses")->where("course_id", $course_id)->exists();
+    if($condition){
+        DB::insert("UPDATE courses SET detail = '$detail' WHERE course_id = '$course_id';");
+    }else{
     DB::insert("INSERT INTO courses (id,course_id,detail) VALUES
         ((SELECT MAX(id)+1 FROM courses),'$course_id', '$detail');");
+    }
     return redirect()->to('/dashboard');
 });
 
@@ -35,10 +40,10 @@ Route::post('/edit', function (Request $request) {
     return view('dashboard');
 });
 
-Route::delete('/delete', function (Request $request) {
-    $course_id = $request->course_id;
-    DB::table('user')->where('course_id', '=', $course_id)->delete();
-    return view('dashboard');
+Route::post('/delete', function () {
+    $course_id = $_POST['course_id'];
+    DB::table('courses')->where('course_id', '=', $course_id)->delete();
+    return redirect()->to('/dashboard');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

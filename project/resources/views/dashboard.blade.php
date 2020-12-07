@@ -24,6 +24,13 @@
                     <th style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{$course->id}}</th>
                     <th style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{$course->course_id}}</th>
                     <th style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{$course->detail}}</th>
+                    <form action = "/delete" method="post">
+                        @csrf
+                    <td>
+                        <button class="d-flex" type="submit" name="course_id" value="{{$course->course_id}}">
+                            <img src="/svg/minus.svg" style="height: 20px;margin-left:5px;">
+                        </button></td>
+                    </form>
                 </tr>
                 @endforeach
                 </table>
