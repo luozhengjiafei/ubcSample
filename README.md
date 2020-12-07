@@ -1,1 +1,1 @@
-# ubcSample website page created with laravel
+# ubcSample website page
