@@ -33,13 +33,6 @@ Route::post('/upload',function(Request $request){
     return redirect()->to('/dashboard');
 });
 
-// Creating course item
-Route::post('/edit', function (Request $request) {
-    $course_id = $request->course_id;
-    DB::table('user')->where('course_id', '=', $course_id)->delete();
-    return view('dashboard');
-});
-
 Route::post('/delete', function () {
     $course_id = $_POST['course_id'];
     DB::table('courses')->where('course_id', '=', $course_id)->delete();
